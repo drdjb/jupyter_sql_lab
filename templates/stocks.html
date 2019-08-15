@@ -1,0 +1,60 @@
+<!DOCTYPE html>  
+<html>  
+    <head>  
+        <title>Manage products</title>  
+    </head>  
+    <body>  
+        <h2>Add/view/update/delete products</h2>   
+        <form action="/addProduct" method="post" style="display: inline-block;">  
+            <table>  
+              <thead><b>Add a product</b></thead>
+                <tr><td>Product_Name</td><td><input type="text" name="pname"></td></tr>  
+                <tr><td>Product_Description</td><td><input type="text" name="pdesc"></td></tr>  
+                <tr><td>Price</td><td><input type="number" step="any" name="pprice"></td></tr>  
+                <tr><td><input type="submit" value="Add"></td></tr>  
+            </table>  
+        </form>  
+        <form action="/updateProduct" method="post" style="display: inline-block;">  
+    		<table> 
+                <thead><b>Update a product</b></thead>
+                <tr><td>Product_ID<td><input type="number" name="pid" value='{{ pid }}'></td></tr> 
+                <tr><td>Product_Name</td><td><input type="text" name="pname2" value='{{ pname2 }}'></td></tr>  
+                <tr><td>Product_Description</td><td><input type="text" name="pdesc2" value='{{ pdesc2 }}'></td></tr>  
+                <tr><td>Price</td><td><input type="number" step="any" name="pprice2" value='{{ pprice2 }}'></td></tr>  
+                <tr><td><input type="submit" name="submit" value="Get details"></td></tr>
+                <tr><td><input type="submit" name="submit" value="Update"></td></tr>
+        	</table>  
+		</form>
+        <form action="/deleteProduct" method="post" style="display: inline-block;">  
+        	<table>   
+                <thead><b>Delete a product</b></thead>
+                <tr><td>Product_ID<td><input type="number" name="pid2"></td></tr> 
+          		<tr><td><input type="submit" name="submit" value="Delete"></td></tr>
+        	</table>
+    	</form>
+      
+      <br>
+      <h3>{{msg}}</h3> 
+      <a href="/">Index</a>
+        
+      <table border=5>  
+          <thead>  
+              <td>Product_ID</td>  
+              <td>Product_Name</td>  
+              <td>Product_Description</td>
+              <td>Price</td>
+          </thead>  
+
+          {% for row in rows %}  
+
+              <tr>  
+                  <td>{{row["Product_ID"]}}</td>  
+                  <td>{{row["Product_Name"]}}</td>  
+                  <td>{{row["Product_Description"]}}</td>
+                  <td>{{row["Price"]}}</td>  
+              </tr>  
+
+          {% endfor %}  
+      </table> 
+    </body>
+</html>

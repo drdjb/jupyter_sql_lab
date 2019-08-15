@@ -1,0 +1,52 @@
+<!DOCTYPE html>  
+<html>  
+    <head>  
+        <title>Manage customers</title>  
+    </head>  
+    <body>  
+        <h2>Add/view/update/delete customers</h2>   
+        <form action="/addCustomer" method="post" style="display: inline-block;">  
+            <table>  
+              <thead><b>Add a customer</b></thead>
+                <tr><td>Customer_Name</td><td><input type="text" name="cname"></td></tr>  
+                <tr><td><input type="submit" value="Add"></td></tr>  
+            </table>  
+        </form>  
+        <form action="/updateCustomer" method="post" style="display: inline-block;">  
+    		<table> 
+                <thead><b>Update a customer</b></thead>
+                <tr><td>Customer_ID<td><input type="number" name="cid" value='{{ cid }}'></td></tr> 
+                <tr><td>Customer_Name</td><td><input type="text" name="cname2" value='{{ cname2 }}'></td></tr>  
+                <tr><td><input type="submit" name="submit" value="Get details"></td></tr>
+                <tr><td><input type="submit" name="submit" value="Update"></td></tr>
+        	</table>  
+		</form>
+        <form action="/deleteCustomer" method="post" style="display: inline-block;">  
+        	<table>   
+                <thead><b>Delete a customer</b></thead>
+                <tr><td>Customer_ID<td><input type="number" name="cid2"></td></tr> 
+          		<tr><td><input type="submit" name="submit" value="Delete"></td></tr>
+        	</table>
+    	</form>
+      
+      <br>
+      <h3>{{msg}}</h3> 
+      <a href="/">Index</a>
+        
+      <table border=5>  
+          <thead>  
+              <td>Customer_ID</td>  
+              <td>Customer_Name</td>  
+          </thead>  
+
+          {% for row in rows %}  
+
+              <tr>  
+                  <td>{{row["Customer_ID"]}}</td>  
+                  <td>{{row["Customer_Name"]}}</td>    
+              </tr>  
+
+          {% endfor %}  
+      </table> 
+    </body>
+</html>
